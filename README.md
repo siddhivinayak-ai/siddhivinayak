@@ -2,7 +2,7 @@
 
 A talking 3D character backed by a **self-learning engineering brain**. It reads your notes (PDF, DOCX, PPTX, TXT, MD), answers systematically with page citations, runs real engineering calculators, remembers what you teach it, and changes its 3D world to match the topic.
 
-![concept](assets/0%20env.png)
+![Siddhivinayak answering from the notes in the Machine Shop scene](docs/screenshot.png)
 
 ## What it does
 
