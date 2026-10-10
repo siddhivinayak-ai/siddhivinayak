@@ -1,0 +1,137 @@
+.voice-orb-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Voice Orb Main Button Container */
+.voice-orb-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* Multi-layered soft blue concentric halos matching reference */
+.orb-halo {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.halo-3 {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(160, 205, 255, 0.22) 0%, rgba(185, 220, 255, 0.04) 70%, transparent 100%);
+  animation: orbPulse 3.6s ease-in-out infinite alternate;
+}
+
+.halo-2 {
+  width: 96px;
+  height: 96px;
+  background: radial-gradient(circle, rgba(150, 195, 255, 0.32) 0%, rgba(175, 215, 255, 0.08) 75%, transparent 100%);
+  animation: orbPulse 3.6s ease-in-out infinite alternate 0.4s;
+}
+
+.halo-1 {
+  width: 78px;
+  height: 78px;
+  background: radial-gradient(circle, rgba(140, 190, 255, 0.45) 0%, rgba(170, 210, 255, 0.15) 80%, transparent 100%);
+}
+
+/* Central Pure White Neumorphic / Glass Disc */
+.orb-core {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 10px 26px rgba(32, 75, 145, 0.13),
+    0 2px 7px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+  z-index: 2;
+}
+
+.voice-orb-container:hover .orb-core {
+  transform: scale(1.06);
+  box-shadow:
+    0 14px 32px rgba(32, 75, 145, 0.18),
+    0 4px 10px rgba(0, 0, 0, 0.06),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.voice-orb-container:active .orb-core {
+  transform: scale(0.96);
+}
+
+.mic-icon {
+  transition: transform 0.25s ease;
+}
+
+.voice-orb-container:hover .mic-icon {
+  transform: scale(1.08);
+}
+
+/* Active listening pulse state */
+.voice-orb-container.listening .halo-3 {
+  animation: listeningPulse 1.2s infinite ease-out;
+}
+
+/* Label below */
+.voice-orb-label {
+  margin-top: 6px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 550;
+  color: #4C6488;
+  letter-spacing: -0.015em;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.voice-orb-container:hover + .voice-orb-label,
+.voice-orb-label:hover {
+  color: #1A355E;
+}
+
+@keyframes orbPulse {
+  0% {
+    transform: scale(0.97);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes listeningPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}

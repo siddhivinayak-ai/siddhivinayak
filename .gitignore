@@ -1,0 +1,47 @@
+# Dependencies & environments
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets — API keys live only on your machine
+.env
+server/.env
+
+# Build output
+dist/
+
+# Generated brain data (index, page renders, model cache, conversation memory).
+# Rebuilt automatically from the knowledge folders on first run.
+server/data/
+
+# Personal / third-party documents: keep them local, the brain learns them on your machine.
+assets/notes/
+server/knowledge/inbox/
+server/knowledge/memory/
+
+# Heavy source assets & duplicates (the app uses public/character/*)
+assets/rocket/
+assets/character 1/
+src/components/rocket/
+src/components/character/*.fbx
+src/components/character/*.obj
+src/components/character/*.dae
+src/components/character/*.usdc
+src/components/character/fbx/
+src/components/character/Texture/
+*.blend
+
+# Large voice models — download separately (see README)
+server/*.onnx
+server/models/*.onnx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+src/components/character/*.glb
+src/components/character/glb/

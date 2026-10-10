@@ -1,0 +1,456 @@
+You are building the 3D ENVIRONMENT for a product called "Siddhivinayak".
+
+IMPORTANT:
+This module is ONLY the 3D environment/stage.
+DO NOT create or include the character.
+DO NOT create the surrounding UI panels, chat panel, microphone button, tool icons, cards, text, or HUD.
+The character will be added separately later.
+
+The attached reference image shows the visual direction.
+
+==================================================
+GOAL
+==================================================
+
+Create a premium, minimal, futuristic white 3D studio environment for a web-based AI engineering companion.
+
+The environment should feel like:
+
+- Apple-level minimalism
+- modern AI research lab
+- clean engineering workspace
+- soft 3D product visualization
+- subtle futuristic atmosphere
+- calm, intelligent and premium
+- NOT cyberpunk
+- NOT sci-fi spaceship
+- NOT dark
+- NOT a generic game environment
+
+The center of the scene must remain intentionally empty because a full-body 3D character will stand there later.
+
+==================================================
+VISUAL REFERENCE
+==================================================
+
+Use the provided reference image as the visual inspiration.
+
+The reference has:
+
+- almost pure white background
+- very soft light-blue atmospheric gradients
+- extremely soft shadows
+- a large circular/elliptical platform beneath the character
+- subtle concentric rings around the platform
+- soft blue-white glow around the central area
+- lots of negative space
+- clean studio lighting
+- no visible walls or hard room boundaries
+- very subtle depth rather than obvious geometry
+- premium 3D product-render aesthetic
+
+The final environment should feel almost like the character is standing inside a clean digital "space".
+
+==================================================
+SCENE COMPOSITION
+==================================================
+
+Create a large circular central platform.
+
+Platform:
+
+- wide circular/elliptical platform
+- white / slightly off-white material
+- extremely smooth edges
+- thin bevel
+- physically believable but minimal
+- approximately 4–5 meters diameter
+- approximately 0.12–0.20 meters thick
+- floating or visually separated slightly from the infinite floor
+- very soft contact shadow
+
+The character will eventually stand exactly at:
+
+X = 0
+Y = platform top
+Z = 0
+
+Therefore:
+
+KEEP THE ENTIRE CENTRAL AREA EMPTY.
+
+Do not place any objects inside approximately a 1.5–2 meter radius around the origin.
+
+==================================================
+SECONDARY PLATFORM DETAILS
+==================================================
+
+Add subtle concentric circular elements around the main platform.
+
+They should NOT look like obvious sci-fi rings.
+
+Instead they should look like:
+
+- subtle optical layers
+- glass-like circular boundaries
+- soft light rings
+- barely visible engineering precision lines
+
+Use 2–3 extremely subtle concentric rings.
+
+Some rings can be slightly larger than the platform.
+
+They should have:
+
+- very low opacity
+- extremely soft blue-white emission
+- blurred appearance
+- no hard neon effect
+
+The rings should enhance depth without becoming the focus.
+
+==================================================
+ENVIRONMENT / FLOOR
+==================================================
+
+Create an infinite-feeling white studio floor.
+
+There should be no visible wall.
+
+Use a large curved/infinite studio backdrop or extremely large plane with a very soft gradient.
+
+The viewer should NOT be able to clearly identify:
+
+"this is a room."
+
+Instead it should feel like an infinite white digital studio.
+
+The horizon should be almost invisible.
+
+Use:
+
+- white
+- warm-neutral white
+- extremely subtle cool blue
+- very light grey
+
+Avoid strong colours.
+
+==================================================
+ATMOSPHERIC LIGHTING
+==================================================
+
+This is extremely important.
+
+The environment should have soft blue atmospheric illumination around the central platform.
+
+Create subtle volumetric-looking blue light / ambient gradients.
+
+Think:
+
+white environment
++
+soft sky-blue light
++
+very subtle bloom
++
+clean studio shadows
+
+NOT:
+
+neon blue
+cyberpunk
+glowing sci-fi room
+
+The blue should mostly appear around the edges of the central stage and in the background.
+
+The center behind the future character should remain bright and clean.
+
+==================================================
+LIGHTING SETUP
+==================================================
+
+Use a professional 3-point/product-render lighting setup.
+
+1. LARGE SOFT KEY LIGHT
+- positioned above/front-left
+- very large area light
+- soft shadows
+- high quality illumination
+
+2. SOFT FILL LIGHT
+- front/right
+- lower intensity
+- prevents harsh shadows
+
+3. COOL BLUE RIM / BACK LIGHT
+- behind the central stage
+- very subtle
+- creates blue atmospheric separation
+
+Also use:
+
+- ambient/environment light
+- soft contact shadows
+- subtle ambient occlusion
+
+Avoid harsh directional shadows.
+
+The future character should receive beautiful soft lighting automatically when placed at the origin.
+
+==================================================
+BACKGROUND ATMOSPHERE
+==================================================
+
+Add extremely subtle abstract atmospheric elements in the far background.
+
+Possible elements:
+
+- very soft blue circular gradients
+- extremely faint floating particles
+- blurred light blobs
+- large transparent glass-like shapes
+- subtle radial light fields
+
+IMPORTANT:
+
+These elements must be:
+
+- extremely subtle
+- blurred
+- low contrast
+- non-distracting
+
+The user should notice the atmosphere subconsciously rather than seeing obvious objects.
+
+Do NOT add random floating cubes, holograms, grids or sci-fi decorations.
+
+==================================================
+MATERIAL DESIGN
+==================================================
+
+Use physically based materials.
+
+Primary material:
+
+Base color:
+#F8FAFC / near-white
+
+Roughness:
+0.35–0.55
+
+Metallic:
+0
+
+Platform material should have a slightly satin finish.
+
+Optional secondary material:
+
+very subtle translucent glass.
+
+Glass should be:
+
+- white
+- transparent
+- low opacity
+- slightly blue tinted
+- high roughness
+- subtle transmission
+
+Do not overuse glassmorphism.
+
+==================================================
+CAMERA
+==================================================
+
+Create a camera designed for a full-body character.
+
+Camera should be:
+
+- slightly above the platform
+- positioned approximately 4–6 meters away
+- looking toward the origin
+- slightly elevated
+- approximately 50–60mm equivalent perspective
+
+The central origin should occupy the visual center of the composition.
+
+Leave enough vertical space above the character's future head.
+
+The character should eventually fit comfortably from:
+
+feet → head
+
+without touching the top or bottom of the viewport.
+
+Use subtle perspective.
+
+Avoid extreme wide-angle distortion.
+
+==================================================
+THREE.JS / REACT THREE FIBER
+==================================================
+
+Implement this as a reusable React Three Fiber environment component.
+
+Recommended structure:
+
+src/
+  components/
+    environment/
+      SiddhivinayakEnvironment.jsx
+      StudioFloor.jsx
+      CentralPlatform.jsx
+      AmbientRings.jsx
+      EnvironmentLights.jsx
+      Atmosphere.jsx
+      index.js
+
+The main component should be:
+
+<SiddhivinayakEnvironment />
+
+It should be completely independent from the character.
+
+Later I should be able to simply do:
+
+<Canvas>
+    <SiddhivinayakEnvironment />
+    <SiddhivinayakCharacter />
+</Canvas>
+
+==================================================
+PERFORMANCE
+==================================================
+
+This is a web application.
+
+Prioritize performance.
+
+DO NOT create a huge number of meshes.
+
+Prefer:
+
+- planes
+- circles
+- low-poly/simple geometry
+- shaders where useful
+- instancing if particles are used
+- baked/static lighting where appropriate
+- efficient materials
+
+Target:
+
+smooth 60 FPS on a normal modern laptop.
+
+The environment should remain lightweight enough that we can later add:
+
+- animated 3D character
+- facial animation
+- lip sync
+- tool objects
+- floating UI
+- particles
+- voice visualization
+
+==================================================
+ANIMATION
+==================================================
+
+The environment should feel alive, but extremely subtly.
+
+Add optional idle animations:
+
+1. Very slow movement of atmospheric blue light.
+
+2. Extremely subtle breathing/pulsing of the outer circular light rings.
+
+3. Very slow movement of a few background particles.
+
+4. Extremely subtle platform glow variation.
+
+Animation should be almost imperceptible.
+
+The scene should never feel like a loading screen.
+
+==================================================
+IMPORTANT DESIGN RULE
+==================================================
+
+The character is the HERO.
+
+The environment exists to make the character look premium.
+
+Therefore:
+
+CHARACTER = highest visual priority
+
+ENVIRONMENT = supporting element
+
+Do not create anything that visually competes with the character.
+
+The center must remain clean.
+
+==================================================
+NO-GO LIST
+==================================================
+
+DO NOT create:
+
+- character
+- human
+- robot
+- avatar
+- furniture
+- desk
+- walls
+- manufacturing machines
+- factory
+- cyberpunk environment
+- dark background
+- neon lighting
+- holographic grids
+- excessive particles
+- random floating objects
+- giant rings
+- sci-fi spaceship aesthetics
+- text
+- UI
+- buttons
+- chat windows
+- tool icons
+- menus
+- labels
+- logos
+
+==================================================
+FINAL VISUAL TARGET
+==================================================
+
+Imagine removing the character from the provided reference image.
+
+Everything remaining should become this environment.
+
+The final result should look like a premium 3D product landing-page scene:
+
+PURE WHITE
++
+SOFT BLUE ATMOSPHERE
++
+CENTRAL WHITE PLATFORM
++
+SUBTLE CIRCULAR LIGHT LAYERS
++
+SOFT STUDIO SHADOWS
++
+INFINITE CLEAN SPACE
++
+LOTS OF NEGATIVE SPACE
+
+The result should be beautiful even when completely empty.
+
+Build this first.
+
+Then provide a simple demo page showing ONLY this environment with the camera slowly orbiting or using a very subtle idle camera movement.
+
+Do not add the character yet.

@@ -1,0 +1,23 @@
+# Voice
+flask>=3.1
+flask-cors>=6.0
+edge-tts>=7.2
+piper-tts>=1.8
+
+# Brain: agent
+langchain>=1.4
+langgraph>=1.2
+langgraph-checkpoint-sqlite>=3.0
+langchain-anthropic>=1.0
+langchain-groq>=1.0
+langchain-google-genai>=3.0
+langchain-ollama>=1.0
+python-dotenv>=1.0
+
+# Brain: knowledge base
+fastembed>=0.9
+rank-bm25>=0.2
+numpy>=2.0
+pymupdf>=1.26
+python-docx>=1.1
+python-pptx>=1.0

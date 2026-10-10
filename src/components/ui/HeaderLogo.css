@@ -1,0 +1,39 @@
+.header-logo {
+  position: absolute;
+  top: clamp(28px, 4.2vh, 46px);
+  left: clamp(32px, 4.2vw, 56px);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+  user-select: none;
+  pointer-events: auto;
+  cursor: default;
+  transition: opacity 0.25s ease;
+}
+
+.header-logo:hover {
+  opacity: 0.9;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #080D1A;
+  box-shadow: 0 0 1px rgba(8, 13, 26, 0.4);
+  flex-shrink: 0;
+  display: inline-block;
+  transform: translateY(0.5px);
+}
+
+.logo-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17.5px;
+  font-weight: 650;
+  line-height: 1;
+  color: #080D1A;
+  letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

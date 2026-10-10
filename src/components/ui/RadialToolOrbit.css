@@ -1,0 +1,117 @@
+.radial-orbit-container {
+  position: absolute;
+  top: 49%;
+  left: calc((100% - var(--chat-w)) / 2);
+  transform: translate(-50%, -50%);
+  width: min(calc(100vw - var(--chat-w) - 32px), 1120px);
+  transition: left 0.35s ease, width 0.35s ease;
+  height: min(88vh, 660px);
+  pointer-events: none;
+  z-index: 15;
+  user-select: none;
+}
+
+/* Background SVG arc guide line & ribbon */
+.orbit-svg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Voice Orb anchor in the unified layout */
+.voice-orb-positioner {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Items placement layer */
+.orbit-items-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual floating tool button */
+.tool-orb-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tool-orb-btn:hover {
+  transform: translate(-50%, -54%) scale(1.08);
+}
+
+.tool-orb-btn:active {
+  transform: translate(-50%, -48%) scale(0.96);
+}
+
+/* Tool icon card - rounded white glass pill */
+.tool-orb-icon-card {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 10px 24px rgba(35, 75, 140, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.03),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tool-orb-btn:hover .tool-orb-icon-card {
+  background: #ffffff;
+  border-color: rgba(140, 190, 255, 0.9);
+  box-shadow:
+    0 14px 32px rgba(35, 85, 170, 0.16),
+    0 4px 10px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+/* Active tool state */
+.tool-orb-btn.active .tool-orb-icon-card {
+  background: #ffffff;
+  border-color: #5593E8;
+  box-shadow:
+    0 12px 28px rgba(50, 110, 210, 0.22),
+    0 0 0 2px rgba(90, 150, 240, 0.25);
+}
+
+/* Tool label beneath icon */
+.tool-orb-label {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 550;
+  color: #50637F;
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.tool-orb-btn:hover .tool-orb-label,
+.tool-orb-btn.active .tool-orb-label {
+  color: #0B172B;
+  font-weight: 600;
+}
