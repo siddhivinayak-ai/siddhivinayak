@@ -1,0 +1,189 @@
+{
+  "id": "td_20261011_153455_cd34",
+  "created_at": "2026-10-11T15:34:55",
+  "object": {
+    "name": "Insulated stainless steel water bottle (1 L)",
+    "category": "drinkware",
+    "description": "Double-wall vacuum-insulated bottle with a PP screw cap and silicone seal.",
+    "confidence": 0.82
+  },
+  "price": {
+    "paid": null,
+    "estimated_retail": 1299,
+    "currency": "INR"
+  },
+  "components": [
+    {
+      "name": "Inner + outer wall",
+      "material_id": "stainless_304",
+      "material_label": "Stainless steel 304",
+      "mass_g": 290,
+      "qty": 1,
+      "process_ids": [
+        "deep_drawing",
+        "welding_arc",
+        "electroplating"
+      ],
+      "process_labels": [
+        "Deep drawing",
+        "Arc welding",
+        "Electroplating"
+      ],
+      "cost": 96,
+      "notes": "Two drawn shells joined at the neck, vacuum between walls."
+    },
+    {
+      "name": "Screw cap",
+      "material_id": "pp",
+      "material_label": "Polypropylene (PP)",
+      "mass_g": 42,
+      "qty": 1,
+      "process_ids": [
+        "injection_moulding"
+      ],
+      "process_labels": [
+        "Injection moulding"
+      ],
+      "cost": 9.6,
+      "notes": "Single-shot moulded cap with a moulded thread and carry loop."
+    },
+    {
+      "name": "Lid seal ring",
+      "material_id": "silicone",
+      "material_label": "Food-grade silicone",
+      "mass_g": 6,
+      "qty": 1,
+      "process_ids": [
+        "injection_moulding"
+      ],
+      "process_labels": [
+        "Injection moulding"
+      ],
+      "cost": 3.4,
+      "notes": "Keeps it leak-proof; pressed into a groove in the cap."
+    },
+    {
+      "name": "Matte outer finish",
+      "material_id": "powder_coat_polyester",
+      "material_label": "Polyester powder coat",
+      "mass_g": 18,
+      "qty": 1,
+      "process_ids": [
+        "powder_coating"
+      ],
+      "process_labels": [
+        "Powder coating"
+      ],
+      "cost": 9.4,
+      "notes": "Sprayed electrostatically and oven-cured for the grippy colour."
+    }
+  ],
+  "processes": [
+    {
+      "id": "deep_drawing",
+      "label": "Deep drawing",
+      "scene": "machining"
+    },
+    {
+      "id": "welding_arc",
+      "label": "Arc welding",
+      "scene": "welding"
+    },
+    {
+      "id": "powder_coating",
+      "label": "Powder coating",
+      "scene": "thermal"
+    },
+    {
+      "id": "electroplating",
+      "label": "Electroplating",
+      "scene": "fluids"
+    },
+    {
+      "id": "injection_moulding",
+      "label": "Injection moulding",
+      "scene": "thermal"
+    }
+  ],
+  "cost": {
+    "currency": "INR",
+    "materials": 70.1,
+    "processing": 48.3,
+    "assembly": 6,
+    "packaging": 9,
+    "overhead": 13.3,
+    "total": 146.7,
+    "breakdown": [
+      {
+        "label": "Stainless steel 304",
+        "kind": "material",
+        "amount": 61.5
+      },
+      {
+        "label": "Polypropylene (PP)",
+        "kind": "material",
+        "amount": 4.2
+      },
+      {
+        "label": "Food-grade silicone",
+        "kind": "material",
+        "amount": 2.6
+      },
+      {
+        "label": "Polyester powder coat",
+        "kind": "material",
+        "amount": 1.8
+      },
+      {
+        "label": "Deep drawing",
+        "kind": "process",
+        "amount": 18
+      },
+      {
+        "label": "Arc welding",
+        "kind": "process",
+        "amount": 9.4
+      },
+      {
+        "label": "Powder coating",
+        "kind": "process",
+        "amount": 7.6
+      },
+      {
+        "label": "Electroplating",
+        "kind": "process",
+        "amount": 7.1
+      },
+      {
+        "label": "Injection moulding",
+        "kind": "process",
+        "amount": 6.2
+      }
+    ],
+    "warnings": []
+  },
+  "markup": {
+    "price_used": 1299,
+    "multiple": 8.9,
+    "verdict": "Premium brand",
+    "where_the_money_goes": [
+      {
+        "label": "Making it",
+        "amount": 146.7
+      },
+      {
+        "label": "Shipping, retail, brand, profit, tax",
+        "amount": 1152.3
+      }
+    ]
+  },
+  "assumptions": [
+    "Made in India/China at ~100k units per year",
+    "Material prices are 2025–26 bulk averages",
+    "Excludes R&D, marketing, retailer margin and GST"
+  ],
+  "fun_fact": "The vacuum gap is only a few millimetres, yet it cuts heat transfer by over 90%.",
+  "narration": "This bottle costs about ₹147 to make. It usually sells for around ₹1,299, so close to nine times the factory cost. Most of that is brand, shipping and the shop.",
+  "scene": "machining",
+  "model": "groq/qwen/qwen3.8-27b"
+}

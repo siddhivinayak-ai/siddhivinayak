@@ -3,6 +3,7 @@ import HeaderLogo from './HeaderLogo'
 import RadialToolOrbit from './RadialToolOrbit'
 import AgentActionBar from './AgentActionBar'
 import ChatPanel from './ChatPanel'
+import Teardown from '../teardown/Teardown'
 import useSpeech from '../../hooks/useSpeech'
 import useListen from '../../hooks/useListen'
 import './InterfaceOverlay.css'
@@ -76,6 +77,12 @@ export default function InterfaceOverlay({ brain, onVolumeChange }) {
 
   const handleAction = (action) => setDraft(ACTION_PROMPTS[action.id] || '')
 
+  // Teardown result: move the twin into the matching workshop and narrate the reveal
+  const handleTeardown = useCallback((result) => {
+    if (result.scene) brain.setScene(result.scene)
+    if (result.narration) speak(result.narration)
+  }, [brain, speak])
+
   return (
     <>
       <HeaderLogo />
@@ -88,6 +95,8 @@ export default function InterfaceOverlay({ brain, onVolumeChange }) {
       />
 
       <AgentActionBar onAction={handleAction} thinking={brain.thinking} />
+
+      <Teardown onStart={stop} onResult={handleTeardown} />
 
       <ChatPanel
         brain={{ ...brain, send: ask }}

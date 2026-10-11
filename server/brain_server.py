@@ -6,6 +6,9 @@ Siddhivinayak brain server (port 5060).
   GET  /api/knowledge     modules, files and indexing status
   GET  /api/page          ?doc_id=..&page=N  → PNG render of the original page (real formulas)
   GET  /api/health
+  POST /api/teardown      multipart image (+ price_paid, currency, hint)  → teardown JSON
+  GET  /api/teardown/<id>         saved teardown JSON;  GET /api/teardown/<id>/image → its photo
+  GET  /api/teardowns     ?limit=20  → {items: [summary...]}, newest first
 
 A background watcher re-scans knowledge folders, so files you copy in by hand are learned too.
 
@@ -21,6 +24,7 @@ from flask import Flask, abort, jsonify, request, send_file
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
+from brain import teardown
 from brain.agent import chat
 from brain.config import (BRAIN_PORT, KNOWLEDGE_DIR, PAGE_CACHE_DIR, SUPPORTED_EXTS,
                           WATCH_INTERVAL_SEC, resolve_llm)
@@ -89,6 +93,58 @@ def api_page():
                 abort(404)
             doc[page - 1].get_pixmap(dpi=130).save(out)
     return send_file(out, mimetype="image/png", max_age=86400)
+
+
+@app.post("/api/teardown")
+def api_teardown():
+    f = request.files.get("image")
+    if not f:
+        return jsonify({"error": "no image (send multipart field 'image')"}), 400
+    ext = (f.filename or "").rsplit(".", 1)[-1].lower() if "." in (f.filename or "") else ""
+    if ext and ext not in {"jpg", "jpeg", "png", "webp"}:
+        return jsonify({"error": "unsupported type; use jpg, png or webp"}), 400
+    raw = f.read(teardown.MAX_IMAGE_BYTES + 1)
+    price_paid = None
+    if (request.form.get("price_paid") or "").strip():
+        try:
+            price_paid = float(request.form["price_paid"].replace(",", "").strip())
+        except ValueError:
+            return jsonify({"error": "price_paid must be a number"}), 400
+    try:
+        return jsonify(teardown.run_teardown(raw, price_paid=price_paid,
+                                             currency=request.form.get("currency") or "INR",
+                                             hint=request.form.get("hint") or ""))
+    except teardown.TeardownError as e:
+        body = {"error": e.message}
+        if e.status == 429:
+            body["retry_after_s"] = e.retry_after_s
+        return jsonify(body), e.status
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"error": f"teardown failed: {type(e).__name__}: {e}"}), 500
+
+
+@app.get("/api/teardown/<td_id>")
+def api_teardown_get(td_id):
+    td = teardown.get(td_id)
+    return jsonify(td) if td else (jsonify({"error": "teardown not found"}), 404)
+
+
+@app.get("/api/teardown/<td_id>/image")
+def api_teardown_image(td_id):
+    path = teardown.image_path(td_id)
+    if not path:
+        abort(404)
+    return send_file(path, mimetype="image/jpeg", max_age=86400)
+
+
+@app.get("/api/teardowns")
+def api_teardowns():
+    try:
+        limit = int(request.args.get("limit", "20"))
+    except ValueError:
+        return jsonify({"error": "limit must be an integer"}), 400
+    return jsonify({"items": teardown.list_teardowns(limit)})
 
 
 def watcher():
